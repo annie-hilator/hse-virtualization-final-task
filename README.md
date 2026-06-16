@@ -154,6 +154,10 @@ sudo ufw status
 docker compose up -d
 ```
 
+Вывод:
+
+![Запуск контейнеров](screenshots/docker-compose-up.png)
+
 Проверка состояния контейнеров:
 
 ```
