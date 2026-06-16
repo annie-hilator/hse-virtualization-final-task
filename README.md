@@ -14,6 +14,8 @@
 http://192.168.0.97
 ```
 
+---
+
 ## Виртуальная машина
 
 Виртуальная машина была создана в Oracle VirtualBox.
@@ -32,6 +34,7 @@ http://192.168.0.97
 Пользователь `user` не является пользователем root и имеет права sudo.
 
 ---
+
 ## Проверка системы и сети
 
 1. Команда:
@@ -39,17 +42,19 @@ http://192.168.0.97
 	hostnamectl
 	```
 	Вывод:
-	 `screenshots/hostname.png`
+
+	 ![hostnamectl](screenshots/hostname.png)
 
 
-2. Команда:
+3. Команда:
 	
 	```
 	ip a
 	```
 
-	Вывод: 
-	`screenshots/ip-a.png`
+	Вывод:
+
+	![ip a](screenshots/ip-a.png)
 
 Основной сетевой интерфейс:
 ```
@@ -57,8 +62,9 @@ enp0s3
 192.168.0.97/24
 ```
 
+---
 
-### Настройка межсетевого экрана
+## Настройка межсетевого экрана
 
 Для настройки firewall использовался UFW.
 
@@ -82,6 +88,7 @@ sudo ufw status
 22/tcp ALLOW
 80/tcp ALLOW
 ```
+
 ---
 
 ## Docker и Docker Compose
@@ -92,16 +99,19 @@ sudo ufw status
 	docker --version
 	```
 	Вывод:
-	 `screenshots/docker.png`
+
+	 ![Docker](screenshots/docker.png)
  
-2. Команда:
+3. Команда:
 	```
 	docker compose version
 	```
 	Вывод:
-	 `screenshots/docker-compose.png`
+
+	![Docker Compose](screenshots/docker-compose.png)
 
 ---
+
 ### Структура проекта
 
 ```
@@ -117,7 +127,7 @@ sudo ufw status
 Файл `.env` используется для хранения параметров подключения к PostgreSQL. 
 
 ---
-## Состав сервисов
+### Состав сервисов
 
 В compose-проекте используются следующие сервисы:
 
@@ -149,9 +159,10 @@ docker compose ps
 ```
 
 Вывод:
-`screenshots/containers.png`
 
-----------
+![Проверка контейнеров](screenshots/containers.png)
+
+---
 
 ## Проверка работы приложения
 
@@ -169,10 +180,12 @@ Server: nginx
 ```
 
 Вывод:
-`screenshots/curl.png`
+
+![curl](screenshots/curl.png)
 
 При обращении к адресу `http://192.168.0.97` приложение успешно открывается через nginx.
-`screenshots/browser.png`
+
+![Проверка](screenshots/browser.png)
 
 
 ----------
@@ -214,9 +227,10 @@ docker compose restart
 Это подтверждает, что данные PostgreSQL сохраняются после перезапуска контейнеров благодаря использованию отдельного тома Docker.
 
 Вывод:
- `screenshots/postgres.png`
 
-----------
+![PostgreSQL](screenshots/postgres.png)
+
+---
 
 ## Остановка проекта
 
