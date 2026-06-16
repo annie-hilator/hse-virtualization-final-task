@@ -1,0 +1,42 @@
+services:
+  proxy:
+    image: nginx:alpine
+    container_name: final_proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+    networks:
+      - final_net
+
+  app:
+    image: traefik/whoami
+    container_name: final_app
+    networks:
+      - final_net
+
+  db:
+    image: postgres:16-alpine
+    container_name: final_db
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U anna -d mydb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - final_net
+
+networks:
+  final_net:
+    driver: bridge
+
+volumes:
+  db_data:
