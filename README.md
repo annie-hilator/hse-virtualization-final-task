@@ -89,6 +89,8 @@ sudo ufw status
 80/tcp ALLOW
 ```
 
+![firewall](screenshots/firewall.png)
+
 ---
 
 ## Docker и Docker Compose
